@@ -7,7 +7,7 @@
     "frameworkVersionFromPackage": "react:react-redux",
     "frameworkHomeURL": "https://react-redux.js.org/",
     "language": "JavaScript",
-    "repoURL": "https://github.com/facebook/react"
+    "repoURL": "https://github.com/reduxjs/redux"
   },
   "scripts": {
     "dev": "webpack --watch",

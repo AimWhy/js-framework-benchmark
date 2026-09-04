@@ -7,7 +7,7 @@
     "frameworkVersionFromPackage": "react:react-tracked",
     "frameworkHomeURL": "https://react-tracked.js.org/",
     "language": "JavaScript",
-    "repoURL": "https://github.com/facebook/react"
+    "repoURL": "https://github.com/dai-shi/react-tracked"
   },
   "scripts": {
     "dev": "webpack --watch",
