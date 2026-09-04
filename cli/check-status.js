@@ -42,7 +42,7 @@ function parseRepoIdentifier(urlStr) {
       fullPath,
     };
   } catch {
-    const match = trimmed.match(/(github\.com|gitlab\.com|gitee\.com)[/:]([^\/]+)\/([^\/#\?]+)/);
+    const match = trimmed.match(/(github\.com|gitlab\.com|gitee\.com)[/:]([^/]+)\/([^/#?]+)/);
     if (match) {
       let provider = "github";
       if (match[1].includes("gitlab")) provider = "gitlab";
@@ -263,6 +263,58 @@ class RepoClient {
 }
 
 /**
+ * Calculates retirement rule (1 - 4) if applicable:
+ * 1. Frameworks from archived repos are archived immediately.
+ * 2. Frameworks with < 10 stars after 180 days of inactivity.
+ * 3. Frameworks with < 100 stars after 365 days of inactivity.
+ * 4. All frameworks after 730 days of inactivity.
+ * Inactivity is the newer date (minimum days) of last commit or last issue.
+ * @param {{ stars: string | number, daysSinceCommit: string | number, daysSinceIssue: string | number, archived: boolean | string }} info
+ * @returns {number | string}
+ */
+function calculateRetire(info) {
+  if (info.archived === true || info.archived === "true") {
+    return 1;
+  }
+
+  const commitDays = typeof info.daysSinceCommit === "number" ? info.daysSinceCommit : parseInt(String(info.daysSinceCommit), 10);
+  const issueDays = typeof info.daysSinceIssue === "number" ? info.daysSinceIssue : parseInt(String(info.daysSinceIssue), 10);
+
+  let inactivityDays = null;
+  const validCommit = !isNaN(commitDays);
+  const validIssue = !isNaN(issueDays);
+
+  if (validCommit && validIssue) {
+    inactivityDays = Math.min(commitDays, issueDays);
+  } else if (validCommit) {
+    inactivityDays = commitDays;
+  } else if (validIssue) {
+    inactivityDays = issueDays;
+  }
+
+  if (inactivityDays === null) {
+    return "";
+  }
+
+  const starCount = typeof info.stars === "number" ? info.stars : parseInt(String(info.stars), 10);
+  const validStars = !isNaN(starCount);
+
+  if (validStars && starCount < 10 && inactivityDays >= 180) {
+    return 2;
+  }
+
+  if (validStars && starCount < 100 && inactivityDays >= 365) {
+    return 3;
+  }
+
+  if (inactivityDays >= 730) {
+    return 4;
+  }
+
+  return "";
+}
+
+/**
  * Escapes values for CSV.
  * @param {any} val
  * @returns {string}
@@ -294,7 +346,7 @@ export async function checkStatus(options = {}) {
   console.log(`Checking status for ${frameworks.length} frameworks...`);
 
   const csvRows = [
-    ["Framework-Name", "Repo URL", "Stars", "Days Since Last Commit", "Days Since Last Issue", "Archived"].join(","),
+    ["Framework-Name", "Repo URL", "Stars", "Days Since Last Commit", "Days Since Last Issue", "Archived", "Retire?"].join(","),
   ];
 
   for (let i = 0; i < frameworks.length; i++) {
@@ -306,7 +358,7 @@ export async function checkStatus(options = {}) {
     process.stdout.write(`[${i + 1}/${frameworks.length}] Checking ${frameworkName}... `);
 
     if (!fs.existsSync(pkgPath)) {
-      csvRows.push([escapeCsvValue(frameworkName), escapeCsvValue("no package.json"), "N/A", "N/A", "N/A", "N/A"].join(","));
+      csvRows.push([escapeCsvValue(frameworkName), escapeCsvValue("no package.json"), "N/A", "N/A", "N/A", "N/A", ""].join(","));
       console.log("no package.json");
       continue;
     }
@@ -315,7 +367,7 @@ export async function checkStatus(options = {}) {
     try {
       pkg = JSON.parse(fs.readFileSync(pkgPath, "utf-8"));
     } catch {
-      csvRows.push([escapeCsvValue(frameworkName), escapeCsvValue("invalid package.json"), "N/A", "N/A", "N/A", "N/A"].join(","));
+      csvRows.push([escapeCsvValue(frameworkName), escapeCsvValue("invalid package.json"), "N/A", "N/A", "N/A", "N/A", ""].join(","));
       console.log("invalid package.json");
       continue;
     }
@@ -324,19 +376,21 @@ export async function checkStatus(options = {}) {
     const repoUrl = meta.repoURL || meta.githubURL || meta.gitlabURL || meta.giteeURL;
 
     if (!repoUrl) {
-      csvRows.push([escapeCsvValue(frameworkName), escapeCsvValue("no repo url"), "N/A", "N/A", "N/A", "N/A"].join(","));
+      csvRows.push([escapeCsvValue(frameworkName), escapeCsvValue("no repo url"), "N/A", "N/A", "N/A", "N/A", ""].join(","));
       console.log("no repo url");
       continue;
     }
 
     const repoInfo = parseRepoIdentifier(repoUrl);
     if (!repoInfo) {
-      csvRows.push([escapeCsvValue(frameworkName), escapeCsvValue(repoUrl), "N/A", "N/A", "N/A", "N/A"].join(","));
+      csvRows.push([escapeCsvValue(frameworkName), escapeCsvValue(repoUrl), "N/A", "N/A", "N/A", "N/A", ""].join(","));
       console.log(`invalid repo url format (${repoUrl})`);
       continue;
     }
 
     const { stars, daysSinceCommit, daysSinceIssue, archived } = await client.getRepoInfo(repoInfo);
+    const retire = calculateRetire({ stars, daysSinceCommit, daysSinceIssue, archived });
+
     csvRows.push(
       [
         escapeCsvValue(frameworkName),
@@ -345,9 +399,12 @@ export async function checkStatus(options = {}) {
         escapeCsvValue(daysSinceCommit),
         escapeCsvValue(daysSinceIssue),
         escapeCsvValue(archived),
+        escapeCsvValue(retire),
       ].join(",")
     );
-    console.log(`[${repoInfo.provider}] stars: ${stars}, commit: ${daysSinceCommit}d ago, issue: ${daysSinceIssue}d ago, archived: ${archived}`);
+    console.log(
+      `[${repoInfo.provider}] stars: ${stars}, commit: ${daysSinceCommit}d ago, issue: ${daysSinceIssue}d ago, archived: ${archived}, retire: ${retire || "-"}`
+    );
   }
 
   fs.writeFileSync(outputFile, csvRows.join("\n") + "\n", "utf-8");

@@ -580,6 +580,11 @@ Thanks to Baptiste Augrain for making the benchmarks more sophisticated and addi
 
 Frameworks without significant activity on github or npm for more than a year will be removed (_automatic commits like dependabot and minor updates, like docs editions, are ignored_).
 
+## 2026-09-04
+The following frameworks were archived after chrome 152. Their last results are included in [chrome 152 results](https://krausest.github.io/js-framework-benchmark/2026/chrome152.html)
+- [x] keyed/incremental-dom
+- [x] keyed/react-redux-rematch
+
 ## 2024-12-11
 The following frameworks were archived after chrome 131. Their last results are included in [chrome 131 results](https://krausest.github.io/js-framework-benchmark/2024/table_chrome_131.0.6778.85.html)
 - [x] react-signalis
