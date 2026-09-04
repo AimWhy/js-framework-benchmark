@@ -9,7 +9,8 @@
     "issues": [
       1139
     ],
-    "language": "Rust"
+    "language": "Rust",
+    "repoURL": "https://github.com/maciejhirsz/kobold"
   },
   "scripts": {
     "minify": "esbuild --bundle ./bundled-dist/js-framework-benchmark-kobold.js --outfile=./bundled-dist/js-framework-benchmark-kobold.js --minify --format=esm --allow-overwrite",

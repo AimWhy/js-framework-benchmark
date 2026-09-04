@@ -7,7 +7,8 @@
   "js-framework-benchmark": {
     "frameworkVersionFromPackage": "react:@legendapp/state",
     "frameworkHomeURL": "https://github.com/LegendApp/legend-state",
-    "language": "JavaScript"
+    "language": "JavaScript",
+    "repoURL": "https://github.com/LegendApp/legend-state"
   },
   "scripts": {
     "dev": "webpack --watch --mode=development",

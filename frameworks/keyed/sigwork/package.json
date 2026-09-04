@@ -5,7 +5,8 @@
   "js-framework-benchmark": {
     "frameworkVersion": "0.1.0",
     "frameworkHomeURL": "https://framework.thatjust.works/",
-    "language": "JavaScript"
+    "language": "JavaScript",
+    "repoURL": "https://github.com/thatjustworks/sigwork"
   },
   "type": "module",
   "scripts": {

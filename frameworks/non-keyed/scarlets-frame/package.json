@@ -11,7 +11,8 @@
       800,
       1139
     ],
-    "language": "JavaScript"
+    "language": "JavaScript",
+    "repoURL": "https://github.com/ScarletsFiction/ScarletsFrame"
   },
   "scripts": {
     "dev": "rollup -c -w",

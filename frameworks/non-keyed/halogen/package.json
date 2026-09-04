@@ -7,7 +7,8 @@
     "frameworkVersion": "7.0.0",
     "frameworkHomeURL": "https://github.com/purescript-halogen/purescript-halogen",
     "includeInBuild": "output-es/bundle.js",
-    "language": "PureScript"
+    "language": "PureScript",
+    "repoURL": "https://github.com/purescript-halogen/purescript-halogen"
   },
   "scripts": {
     "postinstall": "spago install",

@@ -17,6 +17,9 @@
     "frameworkVersion": "0.1.0",
     "frameworkHomeURL": "https://github.com/rheophile10/plastron",
     "language": "typescript",
-    "issues": [1139]
+    "issues": [
+      1139
+    ],
+    "repoURL": "https://github.com/rheophile10/plastron"
   }
 }

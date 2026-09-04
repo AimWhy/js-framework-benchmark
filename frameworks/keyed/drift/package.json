@@ -6,7 +6,8 @@
     "frameworkVersionFromPackage": "driftjs-dom",
     "frameworkHomeURL": "https://github.com/hrutavmodha/driftjs",
     "customURL": "/dist",
-    "language": "JavaScript"
+    "language": "JavaScript",
+    "repoURL": "https://github.com/driftjs-org/driftjs"
   },
   "scripts": {
     "dev": "vite",

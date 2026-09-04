@@ -5,7 +5,8 @@
   "js-framework-benchmark": {
     "frameworkVersionFromPackage": "mimbl",
     "frameworkHomeURL": "https://mimjs.com/",
-    "language": "TypeScript"
+    "language": "TypeScript",
+    "repoURL": "https://github.com/mmichlin66/mimbl"
   },
   "scripts": {
     "build-prod": "webpack"

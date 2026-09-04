@@ -9,7 +9,8 @@
       1139
     ],
     "language": "JavaScript",
-    "includeInBuild": "index.html"
+    "includeInBuild": "index.html",
+    "repoURL": "https://github.com/skruv/liten"
   },
   "scripts": {
     "build-prod": "cp -f index-clean.html index.html && (printf '<script>' && esbuild src/index.js --bundle --minify --format=esm | tr -d '\n\r' && printf '</script>') >> index.html"

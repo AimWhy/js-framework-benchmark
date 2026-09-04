@@ -6,7 +6,8 @@
     "frameworkVersionFromPackage": "maquette",
     "frameworkHomeURL": "https://maquettejs.org/",
     "issues": [],
-    "language": "JavaScript"
+    "language": "JavaScript",
+    "repoURL": "https://github.com/AFASSoftware/maquette"
   },
   "scripts": {
     "dev": "node build.js",

@@ -6,7 +6,8 @@
   "js-framework-benchmark": {
     "frameworkVersionFromPackage": "octane",
     "frameworkHomeURL": "https://octanejs.dev/",
-    "language": "TypeScript"
+    "language": "TypeScript",
+    "repoURL": "https://github.com/octanejs/octane"
   },
   "scripts": {
     "dev": "vite",

@@ -8,7 +8,8 @@
     "customURL": "/target/web/stage",
     "includeInBuild": "target/web/stage",
     "issues": [],
-    "language": "Scala"
+    "language": "Scala",
+    "repoURL": "https://github.com/ThoughtWorksInc/Binding.scala"
   },
   "scripts": {
     "install": "echo This is a no-op. && echo Due to heavy dependencies, the generated javascript is already provided. && echo If you really want to build use: && echo npm run install-force",

@@ -6,7 +6,8 @@
   "js-framework-benchmark": {
     "frameworkVersionFromPackage": "react:react-redux:@rematch/core",
     "frameworkHomeURL": "https://rematchjs.org/",
-    "language": "JavaScript"
+    "language": "JavaScript",
+    "repoURL": "https://github.com/rematch/rematch"
   },
   "scripts": {
     "dev": "webpack --watch",

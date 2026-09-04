@@ -6,7 +6,8 @@
   "js-framework-benchmark": {
     "frameworkVersion": "1.4.0",
     "frameworkHomeURL": "https://wildflowerjs.com",
-    "language": "JavaScript"
+    "language": "JavaScript",
+    "repoURL": "https://github.com/wfjs-admin/WildflowerJS"
   },
   "scripts": {
     "dev": "exit 0",

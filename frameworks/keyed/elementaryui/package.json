@@ -8,7 +8,10 @@
     "frameworkHomeURL": "https://elementary.codes",
     "customURL": "/bundled-dist",
     "language": "Swift",
-    "issues": [1139]
+    "issues": [
+      1139
+    ],
+    "repoURL": "https://github.com/elementary-swift/elementary-ui"
   },
   "scripts": {
     "build-prod": "echo This is a no-op. && echo Due to heavy dependencies, the generated javascript is already provided. && echo If you really want to rebuild from source use: && echo npm run build-prod-force",

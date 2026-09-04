@@ -6,7 +6,8 @@
   "js-framework-benchmark": {
     "frameworkVersionFromPackage": "@ryupold/vode",
     "frameworkHomeURL": "https://github.com/ryupold/vode",
-    "language": "JavaScript"
+    "language": "JavaScript",
+    "repoURL": "https://github.com/ryupold/vode"
   },
   "devDependencies": {
     "esbuild": "0.28.1"

@@ -4,7 +4,8 @@
   "js-framework-benchmark": {
     "frameworkVersion": "1.0.4",
     "frameworkHomeURL": "https://aberdeenjs.org",
-    "language": "JavaScript"
+    "language": "JavaScript",
+    "repoURL": "https://github.com/vanviegen/aberdeen"
   },
   "scripts": {
     "dev": "npx esbuild --bundle main.js --outdir=dist --sourcemap --watch",

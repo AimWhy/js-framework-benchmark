@@ -9,7 +9,8 @@
     "issues": [
       1139
     ],
-    "language": "Rust"
+    "language": "Rust",
+    "repoURL": "https://github.com/seed-rs/seed"
   },
   "scripts": {
     "dev": "rimraf bundled-dist && wasm-pack build --dev --target web --out-name js-framework-benchmark-non-keyed-seed --out-dir bundled-dist && cpr index.html bundled-dist/index.html && rimraf bundled-dist/.gitignore",

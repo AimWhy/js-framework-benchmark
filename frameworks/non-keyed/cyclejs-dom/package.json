@@ -4,7 +4,8 @@
   "description": "Benchmark for Cycle.js framework",
   "js-framework-benchmark": {
     "frameworkVersionFromPackage": "@cycle/dom",
-    "language": "JavaScript"
+    "language": "JavaScript",
+    "repoURL": "https://github.com/cyclejs/cyclejs"
   },
   "scripts": {
     "dev": "webpack --watch --mode=development",

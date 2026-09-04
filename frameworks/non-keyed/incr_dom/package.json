@@ -12,7 +12,8 @@
   "js-framework-benchmark": {
     "frameworkVersion": "0.15.0",
     "frameworkHomeURL": "https://opensource.janestreet.com/incr_dom/",
-    "language": "Reason"
+    "language": "Reason",
+    "repoURL": "https://github.com/janestreet/incr_dom"
   },
   "keywords": [
     "webpack",

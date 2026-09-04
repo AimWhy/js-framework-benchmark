@@ -13,7 +13,8 @@
     "issues": [
       1139
     ],
-    "language": "TypeScript"
+    "language": "TypeScript",
+    "repoURL": "https://github.com/QwikDev/qwik"
   },
   "scripts": {
     "build-dev": "vite --mode ssr",

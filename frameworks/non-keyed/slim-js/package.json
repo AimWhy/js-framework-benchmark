@@ -10,7 +10,8 @@
     "issues": [
       1139
     ],
-    "language": "JavaScript"
+    "language": "JavaScript",
+    "repoURL": "https://github.com/slimjs/slim.js"
   },
   "scripts": {
     "build-prod": "exit 0",

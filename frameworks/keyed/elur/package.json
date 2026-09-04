@@ -7,7 +7,8 @@
     "frameworkVersionFromPackage": "@elurjs/core",
     "frameworkHomeURL": "https://www.elur.dev",
     "customURL": "/dist",
-    "language": "TypeScript"
+    "language": "TypeScript",
+    "repoURL": "https://github.com/elurjs/elur"
   },
   "scripts": {
     "dev": "vite",

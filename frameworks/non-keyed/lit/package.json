@@ -7,7 +7,8 @@
     "frameworkVersionFromPackage": "lit",
     "frameworkHomeURL": "https://lit.dev/",
     "useShadowRoot": true,
-    "language": "TypeScript"
+    "language": "TypeScript",
+    "repoURL": "https://github.com/lit/lit"
   },
   "scripts": {
     "dev": "rollup -c -w",

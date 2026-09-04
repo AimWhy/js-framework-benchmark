@@ -7,7 +7,8 @@
   "js-framework-benchmark": {
     "frameworkVersionFromPackage": "incremental-dom",
     "frameworkHomeURL": "http://google.github.io/incremental-dom/",
-    "language": "JavaScript"
+    "language": "JavaScript",
+    "repoURL": "https://github.com/google/incremental-dom"
   },
   "scripts": {
     "dev": "esbuild src/main.ts --bundle --outfile=dist/main.js --watch",

@@ -9,7 +9,8 @@
     "issues": [
       772
     ],
-    "language": "JavaScript"
+    "language": "JavaScript",
+    "repoURL": "https://github.com/grucloud/bau"
   },
   "scripts": {
     "dev": "vite",

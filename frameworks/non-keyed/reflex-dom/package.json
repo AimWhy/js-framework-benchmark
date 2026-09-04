@@ -7,7 +7,8 @@
     "frameworkVersion": "0.4",
     "frameworkHomeURL": "https://reflex-frp.org/",
     "customURL": "/bundled-dist",
-    "language": "Haskell"
+    "language": "Haskell",
+    "repoURL": "https://github.com/reflex-frp/reflex-dom"
   },
   "contributors": [
     "Ryan Trinkle <ryan.trinkle@gmail.com>"
